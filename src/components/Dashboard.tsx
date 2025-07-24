@@ -16,7 +16,7 @@ export const Dashboard = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
-      content: 'Ask me anything about your portfolio dashboard!',
+      content: 'Ask me anything about your portfolio dashboard',
       isUser: false,
       timestamp: new Date()
     }
