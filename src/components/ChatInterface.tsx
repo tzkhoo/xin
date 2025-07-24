@@ -342,7 +342,7 @@ export const ChatInterface = () => {
         <div className="w-full">
            <div className={`glass-panel p-6 transition-all duration-500 relative ${
              isAdvancedMode 
-               ? `${themeClasses.border} ${themeClasses.bg} animate-premium-burn shadow-[0_0_30px_hsl(160_60%_45%/0.4)]` 
+               ? 'premium-glow premium-shine' 
                : ''
            }`}>
               {isAdvancedMode && (
@@ -374,15 +374,15 @@ export const ChatInterface = () => {
                     />
                   ))}
                   {/* Bottom particles (more intense) */}
-                  {[...Array(10)].map((_, i) => (
+                  {[...Array(30)].map((_, i) => (
                     <div
                       key={`bottom-${i}`}
                       className="particle particle-bottom"
                       style={{
-                        left: `${10 + i * 8}%`,
+                        left: `${2 + i * 3.2}%`,
                         bottom: '0px',
-                        animationDelay: `${i * 0.2}s`,
-                        animationDuration: `${1.5 + Math.random() * 0.3}s`
+                        animationDelay: `${i * 0.08}s`,
+                        animationDuration: `${1.2 + Math.random() * 0.4}s`
                       }}
                     />
                   ))}
@@ -518,28 +518,44 @@ export const ChatInterface = () => {
   );
 };
 
-// Premium User Type Slider Component
+// New Premium Navigation Bar Component
 const PremiumUserTypeSlider = ({ userType, setUserType }: { userType: number, setUserType: (type: number) => void }) => {
   const options = [
-    { id: 0, label: 'BOCHK Client', icon: Building2, shortLabel: ['BOCHK', 'Client'] },
-    { id: 1, label: 'Parents', icon: Crown, shortLabel: ['Parents'] },
-    { id: 2, label: 'Relation Manager', icon: Users, shortLabel: ['Relation', 'Manager'] }
+    { 
+      id: 0, 
+      label: 'BOCHK Client', 
+      icon: Building2, 
+      color: 'hsl(var(--primary))',
+      shortLabel: ['BOCHK', 'Client'] 
+    },
+    { 
+      id: 1, 
+      label: 'Parents', 
+      icon: Crown, 
+      color: 'hsl(var(--parent))',
+      shortLabel: ['Parents'] 
+    },
+    { 
+      id: 2, 
+      label: 'Relation Manager', 
+      icon: Users, 
+      color: 'hsl(var(--rm))',
+      shortLabel: ['Relation', 'Manager'] 
+    }
   ];
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-white/10 backdrop-blur-md rounded-full p-1 border border-white/20 w-[322px]">
-        <div className="relative flex items-center h-16 rounded-full">
-          {/* Single sliding background that moves and changes color */}
+    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="bg-black/20 backdrop-blur-lg rounded-2xl p-2 border border-white/20 shadow-2xl">
+        <div className="relative flex items-center h-16 rounded-xl" style={{ width: '360px' }}>
+          {/* Sliding background indicator */}
           <div 
-            className="absolute h-14 w-[104px] rounded-full transition-all duration-500 ease-out"
+            className="absolute h-12 w-[116px] rounded-xl transition-all duration-500 ease-out shadow-xl"
             style={{ 
-              transform: `translateX(${userType * 104}px)`,
-              background: userType === 0 
-                ? 'linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-glow)))'
-                : userType === 1 
-                  ? 'linear-gradient(to right, hsl(var(--parent)), hsl(var(--parent-light)))'
-                  : 'linear-gradient(to right, hsl(var(--rm)), hsl(var(--rm-light)))'
+              left: '8px',
+              transform: `translateX(${userType * 116}px)`,
+              background: `linear-gradient(135deg, ${options[userType].color}, ${options[userType].color}dd)`,
+              boxShadow: `0 8px 32px ${options[userType].color}40`
             }}
           />
           
@@ -553,15 +569,16 @@ const PremiumUserTypeSlider = ({ userType, setUserType }: { userType: number, se
                 key={option.id}
                 onClick={() => setUserType(option.id)}
                 className={`
-                  relative z-10 flex flex-col items-center justify-center w-[104px] h-14 rounded-full transition-all duration-300
+                  relative z-10 flex flex-col items-center justify-center w-[116px] h-12 rounded-xl 
+                  transition-all duration-300
                   ${isActive 
-                    ? 'text-white font-semibold' 
-                    : 'text-white/70 hover:text-white/90'
+                    ? 'text-white font-bold transform scale-105' 
+                    : 'text-white/60 hover:text-white/80 hover:scale-102'
                   }
                 `}
               >
-                <Icon className="w-3 h-3 mb-1" />
-                <div className="text-xs text-center leading-tight">
+                <Icon className="w-4 h-4 mb-1" />
+                <div className="text-xs text-center leading-tight font-medium">
                   {option.shortLabel.map((line, index) => (
                     <div key={index}>{line}</div>
                   ))}

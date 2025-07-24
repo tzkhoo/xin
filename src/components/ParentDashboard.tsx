@@ -20,7 +20,7 @@ export const ParentDashboard = () => {
       </div>
 
       {/* Access Control Panel */}
-      <Card className="border-parent/30 bg-parent/20">
+      <Card className="border-parent/30 bg-parent/40 backdrop-blur-md">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-parent">
             <Shield className="w-5 h-5" />
@@ -34,7 +34,7 @@ export const ParentDashboard = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {Object.entries(visibilitySettings).map(([key, value]) => (
-              <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-white/20 border border-parent/20 min-h-[60px]">
+              <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-white/40 border border-parent/30 min-h-[60px]">
                 <div className="flex items-center gap-2 flex-1">
                   {value ? <Eye className="w-4 h-4 text-parent flex-shrink-0" /> : <EyeOff className="w-4 h-4 text-muted-foreground flex-shrink-0" />}
                   <span className="text-sm font-medium capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
@@ -54,7 +54,7 @@ export const ParentDashboard = () => {
 
       {/* Wealth Overview */}
       <div className="grid md:grid-cols-3 gap-4">
-        <Card className="border-parent/20">
+        <Card className="border-parent/30 bg-parent/20 backdrop-blur-md">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm text-muted-foreground">Total Assets</CardTitle>
           </CardHeader>
@@ -67,7 +67,7 @@ export const ParentDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-parent/20">
+        <Card className="border-parent/30 bg-parent/20 backdrop-blur-md">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm text-muted-foreground">Protected Assets</CardTitle>
           </CardHeader>
@@ -80,7 +80,7 @@ export const ParentDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-parent/20">
+        <Card className="border-parent/30 bg-parent/20 backdrop-blur-md">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm text-muted-foreground">Authorized Viewers</CardTitle>
           </CardHeader>
@@ -95,7 +95,7 @@ export const ParentDashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <Card className="border-parent/20">
+      <Card className="border-parent/30 bg-parent/20 backdrop-blur-md">
         <CardHeader>
           <CardTitle className="text-parent">Quick Actions</CardTitle>
         </CardHeader>
